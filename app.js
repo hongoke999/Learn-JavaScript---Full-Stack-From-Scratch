@@ -1,31 +1,22 @@
-/* let catName = "Fluffy";
-let catAge = 4;
+let myFavoriteNumber = 7;
+let myFavoriteNumbers = [9, 2, 8, 3, 7, 4];
+let myWords = ["red", "orange", "yellow"];
+let myPets = [{name: "Meowsalot", species: "cat"}, {name: "Barksalot", species: "dog"}];
 
-function meow() {
-  alert("Meowwwwwwwwww");
-}
+myWords.push("green");
+console.log(myWords);
 
-meow(); */
+// let myName = "Chaka";
+// console.log(myName.toUpperCase());
 
-let cat = {
-  name: "Fluffy",
-  age: 4,
-  foods: {
-    favorite: "Tuna",
-    leastFavorite: "Oranges"
-  },
-  eyeColor: "blue",
-  meow() {
-    alert("Meowwwwwwwwwwww");
-  }
-}
+// let myNumber = 7.89;
+// console.log(myNumber.toFixed());
 
-// alert(cat.name);
-// cat.meow();
-// alert(cat.foods.favorite);
+// myWords.shift()
+// myWords.unshift("blue");
 
-document.addEventListener('click', myAmazingFunction);
+myWords.splice(0, 1);
+console.log(myWords);
 
-function myAmazingFunction() {
-  alert("Hello there!");
-}
+console.log(myFavoriteNumbers[3]);
+console.log(myPets[1].species);
