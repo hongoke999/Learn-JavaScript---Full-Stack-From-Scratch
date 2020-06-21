@@ -1,22 +1,14 @@
-let myFavoriteNumber = 7;
-let myFavoriteNumbers = [9, 2, 8, 3, 7, 4];
-let myWords = ["red", "orange", "yellow"];
-let myPets = [{name: "Meowsalot", species: "cat"}, {name: "Barksalot", species: "dog"}];
+/* let strawberryCount = 5;
 
-myWords.push("green");
-console.log(myWords);
+if (strawberryCount > 9) {
+    document.write('Congrats!');
+} else {
+    document.write('Sorry, we do not ship orders that small.');
+}
+ */
+let strawberryCount = 2;
 
-// let myName = "Chaka";
-// console.log(myName.toUpperCase());
-
-// let myNumber = 7.89;
-// console.log(myNumber.toFixed());
-
-// myWords.shift()
-// myWords.unshift("blue");
-
-myWords.splice(0, 1);
-console.log(myWords);
-
-console.log(myFavoriteNumbers[3]);
-console.log(myPets[1].species);
+while (strawberryCount <= 200) {
+    document.write("There are " + strawberryCount + " strawberries.<br>");
+    strawberryCount++;
+}
