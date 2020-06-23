@@ -1,30 +1,17 @@
-let pets = [
-  {name: "Meowsalot", species: "cat", age: 2},
-  {name: "Barksalot", species: "dog", age: 3},
-  {name: "Purrsloud", species: "cat", age: 8}
-];
+/* 
+  Scope is the biggest source of confusion regarding variables
+  Context is the biggest source of confusion regarding objects 
+*/
+let myName = 'Chaka';
 
-// console.log(pets);
-console.log(pets.push({ name: 'Puppster', species: 'dog', age: 1 }));
-
-let ourTest = pets.map(nameOnly);
-
-function nameOnly(pet) {
-  return pet.name;
+function amazingFunction() {
+  // let myName = 'Jino moja mswaki wa nini!!!';
+  if(2 + 2 === 4) {
+    myName = 'Vlad the impaler';
+    console.log("inside the if statement", myName);
+  }
+  // console.log("inside our function", myName);
 }
 
-// console.log(ourTest);
-
-let dogs = pets.filter(onlyDogs);
-
-function onlyDogs(pet) {
-  return pet.species === "dog";
-}
-
-function onlyBabies(pet) {
-  return pet.age < 3;
-}
-
-let babyDogNames = pets.filter(onlyDogs).filter(onlyBabies).map(nameOnly);
-
-console.log(babyDogNames);
+amazingFunction();
+console.log("in the global scope", myName)
