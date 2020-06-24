@@ -1,27 +1,29 @@
-/* 
-  Scope is the biggest source of confusion regarding variables
-  Context is the biggest source of confusion regarding objects 
+//  Anonymous Function
+document.addEventListener('click', function(){
+  alert('Thank you for clicking!!');
+});
 
-  The 'this' keyword points towards the object that is executing the current function
-*/
+//  Arrow functions - neat
+document.addEventListener('click', () => {
+  alert('Thank you for clicking!!');
+});
+
+// Neater
+document.addEventListener('click', () => alert('Thank you for clicking!!'));
+
+
+let myNumbers = [10, 500, 2000];
+let doubledNumbers = myNumbers.map(number => number * 2);
+console.log(doubledNumbers);
+
 let john = {
-  firstName: "John",
-  lastName: "Doe",
+  firstName: 'John',
+  lastName: 'Doe',
   driveCar() {
-    function imAFunctionNotAMethod() {
-      console.log(this);
-    }
+    imAFunctionNotAMethod = () => console.log(this);
     imAFunctionNotAMethod();
-    console.log(this.firstName + " " + this.lastName + " is driving a car.");
+    console.log(this.firstName + ' ' + this.lastName + ' is driving a car.');
   }
 }
 
 john.driveCar();
-
-// Attaching independent function to an object to make it its method
-
-function breath() {
-  console.log(this.firstName + ' ' + this.lastName + ' just inhaled and exhaled.');
-}
-
-breath.call(john);
