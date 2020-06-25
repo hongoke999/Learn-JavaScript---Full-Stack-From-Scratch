@@ -1,24 +1,13 @@
-//  FUNCTION HOISTING
-cool();
+let ourForm = document.getElementById('ourForm');
+let ourField = document.getElementById('ourField');
+let ourList = document.getElementById('ourList');
 
-function cool() {
-  console.log('This is super cool');
+ourForm.addEventListener('submit', (e) => {  
+  e.preventDefault();
+  createItem(ourField.value);
+});
+
+function createItem(item) {
+  let ourHTML = `<li>${item} <button>Delete</button></li>`;
+  ourList.insertAdjacentHTML('beforeend', ourHTML);  
 }
-
-// const cool = function() {
-//   console.log('This is super cool');
-// }
-
-// console.log(strawberryCount);
-let strawberryCount = 100;
-console.log(strawberryCount);
-
-// TEMPLATE LITERAL
-
-let myName = 'Chaka';
-
-console.log(`Hello, my name is ${myName} and the sky is blue.`);
-
-// SEMICOLON
-myName = 'Chaka'
-console.log(`Hello, my name is ${myName} and the sky is blue.`)
