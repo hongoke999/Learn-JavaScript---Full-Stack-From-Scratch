@@ -1,29 +1,24 @@
-//  Anonymous Function
-document.addEventListener('click', function(){
-  alert('Thank you for clicking!!');
-});
+//  FUNCTION HOISTING
+cool();
 
-//  Arrow functions - neat
-document.addEventListener('click', () => {
-  alert('Thank you for clicking!!');
-});
-
-// Neater
-document.addEventListener('click', () => alert('Thank you for clicking!!'));
-
-
-let myNumbers = [10, 500, 2000];
-let doubledNumbers = myNumbers.map(number => number * 2);
-console.log(doubledNumbers);
-
-let john = {
-  firstName: 'John',
-  lastName: 'Doe',
-  driveCar() {
-    imAFunctionNotAMethod = () => console.log(this);
-    imAFunctionNotAMethod();
-    console.log(this.firstName + ' ' + this.lastName + ' is driving a car.');
-  }
+function cool() {
+  console.log('This is super cool');
 }
 
-john.driveCar();
+// const cool = function() {
+//   console.log('This is super cool');
+// }
+
+// console.log(strawberryCount);
+let strawberryCount = 100;
+console.log(strawberryCount);
+
+// TEMPLATE LITERAL
+
+let myName = 'Chaka';
+
+console.log(`Hello, my name is ${myName} and the sky is blue.`);
+
+// SEMICOLON
+myName = 'Chaka'
+console.log(`Hello, my name is ${myName} and the sky is blue.`)
