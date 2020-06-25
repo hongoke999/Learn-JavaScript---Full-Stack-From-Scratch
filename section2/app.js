@@ -8,6 +8,12 @@ ourForm.addEventListener('submit', (e) => {
 });
 
 function createItem(item) {
-  let ourHTML = `<li>${item} <button>Delete</button></li>`;
-  ourList.insertAdjacentHTML('beforeend', ourHTML);  
+  let ourHTML = `<li>${item} <button onclick="deleteItem(this)">Delete</button></li>`;
+  ourList.insertAdjacentHTML('beforeend', ourHTML); 
+  ourField.value = '';
+  ourField.focus();
+}
+
+function deleteItem(elementToDelete) {
+  elementToDelete.parentElement.remove();
 }
