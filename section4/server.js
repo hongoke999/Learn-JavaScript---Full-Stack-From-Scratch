@@ -5,13 +5,16 @@ let app = express();
 
 let db;
 
+app.use(express.static('public'));
+
 let connectionString = 'mongodb+srv://todoAppUser:todoAppUser@cluster0-ijr3a.mongodb.net/TodoApp?retryWrites=true&w=majority'
 mongodb.connect(connectionString, {useNewUrlParser: true}, (err, client) => {
     db = client.db();
     app.listen(3000);
 });
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
 
@@ -39,7 +42,8 @@ app.get('/', (req, res) => {
                 </div> 
 
                 <ul class="list-group pb-5">
-                    ${items.map((item) => {
+                    ${items
+                      .map((item) => {
                         return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
                           <span class="item-text">${item.text}</span>
                           <div>
@@ -51,9 +55,12 @@ app.get('/', (req, res) => {
                             </button>
                           </div>
                         </li>`;
-                    }).join('')}
+                      })
+                      .join('')}
                 </ul>            
-            </div>        
+            </div> 
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/browser.js"></script>       
         </body>
         </html>`);
     });    
@@ -63,5 +70,10 @@ app.post("/create-item", (req, res) => {
     db.collection('items').insertOne({text: req.body.item}, () => {
         res.redirect('/');
     });    
+});
+
+app.post('/update-item', (req, res) => {
+    console.log(req.body.text);
+    res.send("Success");
 });
 
