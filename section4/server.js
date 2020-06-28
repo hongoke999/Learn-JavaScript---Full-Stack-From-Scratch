@@ -7,8 +7,9 @@ let db;
 
 app.use(express.static('public'));
 
-let connectionString = 'mongodb+srv://todoAppUser:todoAppUser@cluster0-ijr3a.mongodb.net/TodoApp?retryWrites=true&w=majority'
-mongodb.connect(connectionString, {useNewUrlParser: true}, (err, client) => {
+let connectionString = 'mongodb+srv://todoAppUser:todoAppUser@cluster0-ijr3a.mongodb.net/TodoApp?retryWrites=true&w=majority';
+
+mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, (err, client) => {
     db = client.db();
     app.listen(3000);
 });
@@ -42,12 +43,11 @@ app.get('/', (req, res) => {
                 </div> 
 
                 <ul class="list-group pb-5">
-                    ${items
-                      .map((item) => {
+                    ${items.map((item) => {
                         return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
                           <span class="item-text">${item.text}</span>
                           <div>
-                            <button class="edit-me btn btn-secondary btn-sm mr-1">
+                            <button data-id="${item._id}" class="edit-me btn btn-secondary btn-sm mr-1">
                               Edit
                             </button>
                             <button class="delete-me btn btn-danger btn-sm">
@@ -72,8 +72,9 @@ app.post("/create-item", (req, res) => {
     });    
 });
 
-app.post('/update-item', (req, res) => {
-    console.log(req.body.text);
-    res.send("Success");
-});
+app.post('/update-item', function(req, res) {
+  db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: req.body.text}}, function() {
+    res.send("Success")
+  })
+})
 
